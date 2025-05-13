@@ -72,6 +72,20 @@ class SettingsWidget extends HTMLElement {
         </div>
       `;
     }
+    
+    connectedCallback() {
+        this.render();
+        this.loadSettings();
+        this.addListeners();
+      
+        // Auto-focus on first-time users
+        if (!localStorage.getItem('userLocation')) {
+          this.style.display = 'block';
+        } else {
+          this.style.display = 'none'; // Auto-hide if location is set
+        }
+      }
   }
+  
   
   customElements.define('settings-widget', SettingsWidget);
