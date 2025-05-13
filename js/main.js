@@ -10,6 +10,7 @@ import './widgets/meme-widget.js';
 import './widgets/news-widget.js';
 import './widgets/spotify-widget.js';
 import './widgets/verse-widget.js';
+import './widgets/settings-widget.js';
 import { applyWidgetSettings } from './settings.js';
 
 // After onboarding logic
