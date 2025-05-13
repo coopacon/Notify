@@ -44,8 +44,8 @@ class MemeWidget extends HTMLElement {
     }
   }
 
-const axios = require('axios');
-const xml2js = require('xml2js');
+// const axios = require('axios');
+// const xml2js = require('xml2js');
 
 async function checkYouTubeRSS() {
     const rssURL = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw';
