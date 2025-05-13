@@ -13,11 +13,6 @@ import './widgets/verse-widget.js';
 import './widgets/settings-widget.js';
 import { applyWidgetSettings } from './settings.js';
 
-// After onboarding logic
-if (!firstVisit) {
-  applyWidgetSettings(); // Apply user widget visibility + sizing
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   const appRoot = document.getElementById('app-root');
   const onboardingContainer = document.getElementById('onboarding-container');
@@ -33,10 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('onboardingComplete', 'true');
       onboardingContainer.remove();
       appRoot.classList.remove('hidden');
+      applyWidgetSettings();
     });
   } else {
     onboardingContainer.remove();
     appRoot.classList.remove('hidden');
+    applyWidgetSettings();
   }
 });
 
