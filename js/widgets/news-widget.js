@@ -1,3 +1,4 @@
+const location = localStorage.getItem('userLocation') || 'United States';
 class NewsWidget extends HTMLElement {
     constructor() {
       super();
