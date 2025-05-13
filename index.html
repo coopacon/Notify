@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style/main.css" />
+  <title>Perplexity Dashboard</title>
+</head>
+<body>
+  <div id="onboarding-container"></div>
+  <div id="app-root" class="hidden">
+    <custom-clock></custom-clock>
+    <holiday-widget></holiday-widget>
+    <weather-widget></weather-widget>
+    <news-widget></news-widget>
+    <flag-widget></flag-widget>
+    <meme-widget></meme-widget>
+    <verse-widget></verse-widget>
+    <calendar-widget></calendar-widget>
+    <spotify-widget></spotify-widget>
+    <meals-widget></meals-widget>
+    <links-widget></links-widget>
+    <!-- Add in index.html, under onboarding or via a settings toggle -->
+    <div id="settings-panel">
+    <h2>Widget Settings</h2>
+    <label>
+      <input type="checkbox" data-widget="meals-widget" />
+      Show Protein Meal Suggestions
+    </label>
+  </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

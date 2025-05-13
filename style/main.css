@@ -1,0 +1,64 @@
+:root {
+    --bg: #f9f9f9;
+    --widget-bg: white;
+    --widget-radius: 20px;
+    --widget-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --padding: 1rem;
+    --gap: 1.5rem;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  body {
+    background-color: var(--bg);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: var(--padding);
+    display: flex;
+    justify-content: center;
+  }
+  
+  #app-root {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--gap);
+    max-width: 1200px;
+    margin: auto;
+    transition: all 0.3s ease;
+  }
+  
+  .widget {
+    background: var(--widget-bg);
+    border-radius: var(--widget-radius);
+    box-shadow: var(--widget-shadow);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .widget:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Widget size variants */
+  .widget-small {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .widget-wide {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  
+  .widget-tall {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  
+  .widget-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
