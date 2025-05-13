@@ -11,19 +11,43 @@ class NewsWidget extends HTMLElement {
     }
   
     async loadNews() {
-      // Replace this mock with real API integration later
-      const breakingNews = {
-        isBreaking: true,
-        headline: 'Major economic legislation passed in Congress.',
-        url: 'https://example.com/breaking-news'
+      const el = this.shadowRoot.getElementById('news');
+      el.textContent = 'Checking for political news...';
+  
+      // Retrieve location from local storage or settings system
+      const location = localStorage.getItem('userLocation') || 'United States';
+  
+      try {
+        const response = await this.queryPerplexity(location);
+        
+        if (response && response.headline) {
+          el.innerHTML = `
+            <strong>🗳️ Political News for ${location}:</strong><br>
+            <a href="${response.url}" target="_blank">${response.headline}</a>
+          `;
+        } else {
+          el.innerHTML = `No political news found for ${location} today.`;
+        }
+      } catch (error) {
+        el.innerHTML = `⚠️ Error loading news: ${error.message}`;
+      }
+    }
+  
+    // Replace this with real API integration when available
+    async queryPerplexity(location) {
+      // Mock result for demo — you would replace this with a real fetch
+      const prompt = `Is there any political news today for ${location}? Give a headline and link if so.`;
+      
+      // Example simulated fetch
+      const mockResponse = {
+        headline: `Governor of ${location} announces new policy changes.`,
+        url: `https://example.com/political-news-${location.toLowerCase()}`
       };
   
-      const el = this.shadowRoot.getElementById('news');
-      if (breakingNews.isBreaking) {
-        el.innerHTML = `<strong>🚨 Breaking News:</strong><br><a href="${breakingNews.url}" target="_blank">${breakingNews.headline}</a>`;
-      } else {
-        el.innerHTML = `No urgent breaking news right now.`;
-      }
+      // Simulate delay
+      await new Promise(r => setTimeout(r, 1000));
+  
+      return mockResponse;
     }
   
     render() {
@@ -37,7 +61,7 @@ class NewsWidget extends HTMLElement {
             text-decoration: underline;
           }
         </style>
-        <div id="news">Checking for breaking news...</div>
+        <div id="news">Loading political news...</div>
       `;
     }
   }
